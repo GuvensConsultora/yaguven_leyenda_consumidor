@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Ajustes > Empresas > (empresa): los dos datos de la leyenda, debajo de los datos
+         fiscales argentinos. Se ancla en un campo de l10n_ar que existe igual en 17 y en 20. -->
+    <record model="ir.ui.view" id="view_company_form_leyenda_consumidor">
+        <field name="name">res.company.form.yaguven.leyenda.consumidor</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="l10n_ar.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="l10n_ar_afip_start_date" position="after">
+                <field name="yaguven_leyenda_consumidor" invisible="country_code != 'AR'"/>
+                <field name="yaguven_leyenda_state_id" invisible="country_code != 'AR'"
+                       options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

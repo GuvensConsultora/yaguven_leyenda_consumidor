@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Ley 13.987 PBA + Res. 386-MPCEITGP-2026: leyenda de orientación al consumidor,
+         «legible y destacada», en facturas y NC a consumidor final emitidas en la provincia.
+         Se hereda la versión argentina de la factura (la que imprime Odoo para empresas AR) y se
+         ubica después de los términos y condiciones, en el mismo lugar donde l10n_ar pone la
+         leyenda de la RG 5003. -->
+    <template id="report_invoice_document_leyenda_consumidor"
+              inherit_id="l10n_ar.report_invoice_document">
+        <xpath expr="//div[@name='comment']" position="after">
+            <t t-set="yaguven_leyenda" t-value="o._yaguven_leyenda_consumidor()"/>
+            <div t-if="yaguven_leyenda" name="yaguven_leyenda_consumidor"
+                 style="border: 2px solid #000; padding: 6px 10px; margin: 8px 0;
+                        text-align: center; font-weight: bold; font-size: 1.1em;
+                        page-break-inside: avoid;">
+                <span t-out="yaguven_leyenda"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
